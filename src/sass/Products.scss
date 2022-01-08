@@ -1,0 +1,87 @@
+@import "index";
+
+.products {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"header"
+		"main";
+
+	height: 100vh;
+
+	.header {
+		grid-area: header;
+	}
+
+	.main {
+		grid-area: main;
+		overflow: auto;
+
+		display: grid;
+		grid-template-rows: [main-row-start] repeat(5, [row-start] 1fr [row-end]) [main-row-end];
+		grid-template-columns:
+			[main-col-start] repeat(7, [col-start] 1fr [col-end])
+			[main-col-end];
+
+		background-color: #f7efe7;
+
+		&__content {
+			grid-row: main-row-start / main-row-end;
+			grid-column: main-col-start / main-col-end;
+
+			display: grid;
+			grid-template-rows: 70vh auto auto;
+
+			&__hero {
+				grid-row: 1 / 2;
+			}
+
+			&__cta {
+				grid-row: 2 / 3;
+				display: grid;
+				justify-content: stretch;
+				align-content: stretch;
+			}
+
+			&__catalogue {
+				grid-row: 3 / 4;
+			}
+		}
+
+		&__drawer {
+			grid-row: row-start 1 / row-end 5;
+			grid-column: col-start 6 / col-end 7;
+			@include responsive(tab-port) {
+				grid-row: row-start 1 / row-end 5;
+				grid-column: col-start 5 / col-end 7;
+			}
+			@include responsive(phone) {
+				grid-row: row-start 1 / row-end 3;
+				grid-column: main-col-start / main-col-end;
+			}
+
+			position: sticky;
+			top: 0;
+			overflow: hidden;
+
+			&.drawer--open {
+				z-index: 0;
+				& > * {
+					transition: transform 0.5s ease-in-out;
+					transform: translateX(0);
+				}
+			}
+
+			&.drawer--closed {
+				transition: z-index 0s linear 0.5s;
+				z-index: -1;
+
+				& > * {
+					transition: transform 0.5s ease-in-out;
+					transform: translateX(100%);
+				}
+			}
+		}
+	}
+}

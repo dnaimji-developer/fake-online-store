@@ -1,7 +1,15 @@
 import React from "react";
 
+import "../../sass/Hero.scss";
+import background from "../../images/background.jpg";
+
 const Hero = () => {
-	return <h2>HERO</h2>;
+	return (
+		<div
+			className="hero"
+			style={{ backgroundImage: `url(${background})` }}
+		></div>
+	);
 };
 
 export default Hero;

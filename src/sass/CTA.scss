@@ -1,0 +1,27 @@
+.cta {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	text-align: center;
+	gap: 0.5rem;
+
+	padding: 2rem;
+	background: #003941;
+
+	&__banner {
+		font-family: Crimson Text;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 5rem;
+		line-height: 5rem;
+		color: white;
+	}
+
+	& .ui.black.button {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+	}
+}

@@ -5,17 +5,34 @@ import Hero from "./Hero";
 import CTA from "./CTA";
 import Catalogue from "./Catalogue";
 import Cart from "./Cart";
+import "../../sass/Products.scss";
 
 const Products = () => {
 	return (
-		<div>
-			<h1>PRODUCTS</h1>
-			<NavBar />
-			<Hero />
-			<CTA />
-			<Catalogue />
-			<Cart />
-		</div>
+		<article className="products">
+			<header className="header">
+				<NavBar />
+			</header>
+			<main className="main">
+				<section className="main__content">
+					<div className="main__content__hero">
+						<Hero />
+					</div>
+					<div className="main__content__cta">
+						<CTA />
+					</div>
+					<div
+						id="main__content__catalogue"
+						className="main__content__catalogue"
+					>
+						<Catalogue />
+					</div>
+				</section>
+				<section className={`main__drawer drawer--closed`}>
+					<Cart />
+				</section>
+			</main>
+		</article>
 	);
 };
 

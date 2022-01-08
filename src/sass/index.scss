@@ -1,0 +1,66 @@
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+1200 - 1800:    Desktop
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- desktop
+- big-desktop
+1em = 16px
+*/
+@mixin responsive($breakpoint) {
+	@if $breakpoint == phone {
+		//600px
+		@media (max-width: 37.5em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tab-port {
+		//900px
+		@media (max-width: 56.25em) {
+			@content;
+		}
+	}
+	@if $breakpoint == tab-land {
+		//1200px
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+	@if $breakpoint == big-desktop {
+		//1800px
+		@media (min-width: 112.5em) {
+			@content;
+		}
+	}
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%; // This defines what 1rem is (62.5% = 10px)
+	box-sizing: border-box;
+
+	@include responsive(tab-land) {
+		font-size: 56.25%;
+	}
+
+	@include responsive(tab-port) {
+		font-size: 50%;
+	}
+
+	@include responsive(big-desktop) {
+		font-size: 75%;
+	}
+}
