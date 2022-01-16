@@ -3,7 +3,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import Hero from "./Hero";
 import CTA from "./CTA";
-import Catalogue from "./Catalogue";
+import Catalogue from "./Catalogue/Catalogue";
 import Cart from "./Cart";
 import "../../sass/Products.scss";
 
