@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import NavBar from "./NavBar";
 import Hero from "./Hero";
@@ -7,7 +8,8 @@ import Catalogue from "./Catalogue/Catalogue";
 import Cart from "./Cart";
 import "../../sass/Products.scss";
 
-const Products = () => {
+const Products = (props) => {
+	const isDrawerOpen = props.isDrawerOpen ? "open" : "closed";
 	return (
 		<article className="products">
 			<header className="header">
@@ -28,7 +30,7 @@ const Products = () => {
 						<Catalogue />
 					</div>
 				</section>
-				<section className={`main__drawer drawer--closed`}>
+				<section className={`main__drawer drawer--${isDrawerOpen}`}>
 					<Cart />
 				</section>
 			</main>
@@ -36,4 +38,9 @@ const Products = () => {
 	);
 };
 
-export default Products;
+const mapStateToProps = (state) => {
+	const isDrawerOpen = state.isDrawerOpen;
+	return { isDrawerOpen };
+};
+
+export default connect(mapStateToProps)(Products);

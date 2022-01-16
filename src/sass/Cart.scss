@@ -1,0 +1,11 @@
+.cart {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr auto;
+	row-gap: 0.5rem;
+
+	height: 100%;
+	width: 100%;
+	padding: 1.5rem;
+	background-color: white;
+}
