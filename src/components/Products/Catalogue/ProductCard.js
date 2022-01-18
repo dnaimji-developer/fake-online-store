@@ -1,8 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 
+import { openDrawer } from "../../../actions";
 import "../../../sass/ProductCard.scss";
 
-const Product = ({ product }) => {
+const Product = ({ product, openDrawer }) => {
+	const onButtonClick = () => {
+		openDrawer();
+	};
+
 	let { title, description, price, image } = product;
 	return (
 		<div className="ui card">
@@ -16,7 +22,10 @@ const Product = ({ product }) => {
 					<p>{`$${price.toFixed(2)}`}</p>
 				</div>
 			</div>
-			<div className="ui bottom attached button btn--cart">
+			<div
+				className="ui bottom attached button btn--cart"
+				onClick={onButtonClick}
+			>
 				<i className="add icon"></i>
 				Add To Cart
 			</div>
@@ -24,4 +33,4 @@ const Product = ({ product }) => {
 	);
 };
 
-export default Product;
+export default connect(null, { openDrawer })(Product);
