@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { openDrawer } from "../../../actions";
+import { openDrawer, addCartItem } from "../../../actions";
 import "../../../sass/ProductCard.scss";
 
-const Product = ({ product, openDrawer }) => {
+const Product = ({ product, openDrawer, addCartItem }) => {
+	let { title, description, price, image, id } = product;
+
 	const onButtonClick = () => {
 		openDrawer();
+		addCartItem(id);
 	};
 
-	let { title, description, price, image } = product;
 	return (
 		<div className="ui card">
 			<div className="image">
@@ -33,4 +35,4 @@ const Product = ({ product, openDrawer }) => {
 	);
 };
 
-export default connect(null, { openDrawer })(Product);
+export default connect(null, { openDrawer, addCartItem })(Product);
