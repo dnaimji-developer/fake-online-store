@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 
-import { closeDrawer } from "../../actions";
-import "../../sass/Cart.scss";
+import CartItems from "./CartItems";
+import CartTotal from "./CartTotal";
+import { closeDrawer } from "../../../actions";
+import "../../../sass/Cart.scss";
 
 const Cart = ({ closeDrawer }) => {
 	const ref = useRef();
@@ -32,7 +34,8 @@ const Cart = ({ closeDrawer }) => {
 
 	return (
 		<div ref={ref} className="cart">
-			<h2>CART</h2>
+			<CartItems />
+			<CartTotal />
 		</div>
 	);
 };
